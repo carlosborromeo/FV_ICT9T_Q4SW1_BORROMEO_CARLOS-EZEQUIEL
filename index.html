@@ -12,7 +12,7 @@
     body {
       font-family: 'Google Sans', sans-serif;
       background-color: #f0f8ff;
-      background-image: url('https://miro.medium.com/0*Ig2a1abnTQ1gIlog');
+      background-image: url('https://pbs.twimg.com/media/DLY46fHXUAEo6Ac.jpg');
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;            
@@ -47,7 +47,7 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      object-fit: cover;
+      object-fit: contain;
       border: 2px solid #fdd835;
     }
 
@@ -70,14 +70,29 @@
 </style>
 </head>
 <body>
+
+    <header class="navbar">
+        <div class="navbar-left">
+            <img src="https://static.wikia.nocookie.net/five-world-war/images/3/30/Ua.jpg/revision/latest?cb=20190303163122" alt="U.A. High Logo" />
+            <div class="navbar-title">U.A. Hero Portal</div>
+        </div>
+        <nav class="navbar-links">
+            <a href="#">Home</a>
+            <a href="https://myheroacademia.fandom.com/wiki/U.A._High_School">About U.A.</a>
+            <a href="https://myheroacademia.fandom.com/wiki/My_Hero_Academia_Wiki">Support</a>
+        </nav>
+    </header>
+
+    <br class="mb-3">
+
     <div class="container">
         <div class="login-container bg-white">
             <h1 class="text-center mb-4">U.A. Hero Portal</h1>
             
-            <p class="text-center">Please enter your username and password below.</p>
+            <p class="text-center">Please enter your hero name and password below.</p>
             
             <div class="text-center mb-3">
-                <button id="toggleInstructions" class="btn btn-outline-info btn-sm" onclick="toggleInstructions()">
+                <button id="toggleInstructions" class="btn btn-outline-primary btn-sm" onclick="toggleInstructions()">
                     Show Instructions
                 </button>
             </div>
@@ -90,7 +105,7 @@
             <form id="loginForm" onsubmit="return validateLogin(event)">
                 <div class="mb-3">
                     <label for="username" class="form-label">Hero Name</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+                    <input type="text" class="form-control" id="username" placeholder="Enter hero name" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
@@ -111,7 +126,7 @@
             <div id="output" class="mt-3 text-center"></div>
             
             <p class="mt-3 text-center">
-                <a href="https://docs.google.com/document/d/1RLtLI_3RETCDkJ9HPE5ncPFdhGvAOfMhUIRCsiabXwc/edit?usp=sharing" class="link-info">Forgot username/password?</a>
+                <a href="https://docs.google.com/document/d/1RLtLI_3RETCDkJ9HPE5ncPFdhGvAOfMhUIRCsiabXwc/edit?usp=sharing" class="link-primary">Forgot hero name/password?</a>
             </p>
         </div>
     </div>
@@ -146,30 +161,20 @@
         }
 
         function showRemember() {
-         const checkBox = document.getElementById("checkRememberMe");
-         const textContainer = document.getElementById("rememberMe");
+        let checkBox= document.getElementById("checkRememberMe").checked;
+        const textContainer = document.getElementById("rememberMe");
+         // when checkbox is checked, it reads as true
 
-            if (checkBox.checked) {
-                textContainer.innerHTML = "Your login details will be remembered on this device.";
-            } else {
-                textContainer.innerHTML = "";
-            }
-        }
-
-        function function_name_here() {
-        let variable_name= document.getElementById("checkboxID").checked; 
-         //when checked, it reads true
-
-        switch(variable_name) {
+        switch(checkBox) {
             case true:
-                //use innerHTML to display a message
+                textContainer.innerHTML = "Your login details will be remembered on this device.";
             break;
 
             case false:
-                //use innerHTML to show nothing. use quotation;
+                textContainer.innerHTML = "";
             break;
 
-            //default may almost never needed since there is already true and false statement;
+            // default not needed since it's a boolean; there's no third value aside from true and false
             }
         }
 
